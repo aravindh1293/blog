@@ -1,0 +1,5891 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>SQL - Hands-on | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="SQL - Hands-on" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="getting hands on sql syntax" />
+<meta property="og:description" content="getting hands on sql syntax" />
+<link rel="canonical" href="https://aravindh1293.github.io/blog/2022/10/11/SQL-Data-Manipulation.html" />
+<meta property="og:url" content="https://aravindh1293.github.io/blog/2022/10/11/SQL-Data-Manipulation.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-10-11T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2022-10-11T00:00:00-05:00","url":"https://aravindh1293.github.io/blog/2022/10/11/SQL-Data-Manipulation.html","@type":"BlogPosting","headline":"SQL - Hands-on","dateModified":"2022-10-11T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://aravindh1293.github.io/blog/2022/10/11/SQL-Data-Manipulation.html"},"description":"getting hands on sql syntax","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://aravindh1293.github.io/blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">SQL - Hands-on</h1><p class="page-description">getting hands on sql syntax</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-10-11T00:00:00-05:00" itemprop="datePublished">
+        Oct 11, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      19 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/aravindh1293/blog/tree/master/_notebooks/2022-10-11-SQL-Data-Manipulation.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/aravindh1293/blog/master?filepath=_notebooks%2F2022-10-11-SQL-Data-Manipulation.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/aravindh1293/blog/blob/master/_notebooks/2022-10-11-SQL-Data-Manipulation.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Data-Manipulation-:">Data Manipulation : </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#LIMIT">LIMIT </a></li>
+<li class="toc-entry toc-h3"><a href="#OFFSET">OFFSET </a></li>
+<li class="toc-entry toc-h3"><a href="#ORDER-BY">ORDER BY </a></li>
+<li class="toc-entry toc-h3"><a href="#DISTINCT">DISTINCT </a></li>
+<li class="toc-entry toc-h3"><a href="#WHERE">WHERE </a></li>
+<li class="toc-entry toc-h3"><a href="#AND,-OR,-NOT,-ALL,-ANY,-BETWEEN,-EXISTS,-IN,-LIKE,-SOME">AND, OR, NOT, ALL, ANY, BETWEEN, EXISTS, IN, LIKE, SOME </a></li>
+<li class="toc-entry toc-h3"><a href="#Aggregate-Functions-:">Aggregate Functions : </a></li>
+<li class="toc-entry toc-h3"><a href="#GROUP-BY-with-COUNTS">GROUP BY with COUNTS </a></li>
+<li class="toc-entry toc-h3"><a href="#HAVING">HAVING </a></li>
+<li class="toc-entry toc-h3"><a href="#JOIN">JOIN </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Natural-JOIN">Natural JOIN </a></li>
+<li class="toc-entry toc-h4"><a href="##-Inner-join-(default)-vs-left-outer-vs-right-outer-vs-full-outer-join."># Inner join (default) vs left outer vs right outer vs full-outer join. </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Sub-Queries-or-Nested-Queries-or-Inner-Queries">Sub-Queries or Nested Queries or Inner Queries </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#EXISTS,-ANY,-ALL">EXISTS, ANY, ALL </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-10-11-SQL-Data-Manipulation.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>SQL is one of the important skill for Machine learning Engineer and Data scientists.</p>
+<p>SQL can be broken into subsets. SQL is used as</p>
+<ol>
+<li>Data Manipulation Language.</li>
+<li>Data Defenition Language.</li>
+<li>Data Control Language.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Data Defenition Language (DDL) :</strong></p>
+<p>creating database, tables and assigning columns or attributes to each table.</p>
+<p><strong>Data Manipulation Language (DML) :</strong></p>
+<p>Manipulating data to get answers from data or source data to seperate table.(SELECT, READ, UPDATE, DELETE.)</p>
+<p>we will focus more on DML.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-Manipulation-:">
+<a class="anchor" href="#Data-Manipulation-:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Manipulation :<a class="anchor-link" href="#Data-Manipulation-:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sqlalchemy</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">engine</span> <span class="o">=</span> <span class="n">sqlalchemy</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s2">"mysql+pymysql://root:password@localhost:3306/imdb"</span><span class="p">)</span>
+
+<span class="n">con</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">con</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>IMDB dataset contains data about movies, genre, rankscore, actors and directors in particular movie.</p>
+<p>It has data ranging from 1888 to 2008.</p>
+<p>Tables in IMDB dataset are :</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s1">'SHOW TABLES;'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tables_in_imdb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>actors</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>directors</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>directors_genres</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>movies</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>movies_directors</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>movies_genres</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>roles</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Attributes in each tables are :</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">query</span><span class="p">(</span><span class="s1">'SHOW TABLES;'</span><span class="p">)[</span><span class="s1">'Tables_in_imdb'</span><span class="p">]:</span>
+    <span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s2"> : "</span><span class="p">,</span> <span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">'DESCRIBE </span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s1">;'</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'actors : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>first_name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>last_name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gender</td>
+      <td>char(1)</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'directors : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>first_name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>last_name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'directors_genres : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>director_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>genre</td>
+      <td>varchar(100)</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>prob</td>
+      <td>float</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'movies : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>year</td>
+      <td>int</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>rankscore</td>
+      <td>float</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'movies_directors : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>director_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>movie_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'movies_genres : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>movie_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>genre</td>
+      <td>varchar(100)</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>'roles : '</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>actor_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>movie_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>role</td>
+      <td>varchar(100)</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## but lets look only whats inside movies table</span>
+<span class="n">query</span><span class="p">(</span><span class="s1">'SELECT * FROM movies'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>year</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>#28</td>
+      <td>2002</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>$</td>
+      <td>1971</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>$1,000 Reward</td>
+      <td>1913</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>$1,000 Reward</td>
+      <td>1915</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>388264</th>
+      <td>412316</td>
+      <td>"zem blch krlu"</td>
+      <td>1991</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>388265</th>
+      <td>412317</td>
+      <td>"rgammk"</td>
+      <td>1995</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>388266</th>
+      <td>412318</td>
+      <td>"zgnm Leyla"</td>
+      <td>2002</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>388267</th>
+      <td>412319</td>
+      <td>" Istanbul"</td>
+      <td>1983</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>388268</th>
+      <td>412320</td>
+      <td>"sterreich"</td>
+      <td>1958</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>388269 rows × 4 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>there are total of 388269 movies in imdb dataset.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, year FROM movies;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#28</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$</td>
+      <td>1971</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$1,000 Reward</td>
+      <td>1913</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$1,000 Reward</td>
+      <td>1915</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>388264</th>
+      <td>"zem blch krlu"</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>388265</th>
+      <td>"rgammk"</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>388266</th>
+      <td>"zgnm Leyla"</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>388267</th>
+      <td>" Istanbul"</td>
+      <td>1983</td>
+    </tr>
+    <tr>
+      <th>388268</th>
+      <td>"sterreich"</td>
+      <td>1958</td>
+    </tr>
+  </tbody>
+</table>
+<p>388269 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LIMIT">
+<a class="anchor" href="#LIMIT" aria-hidden="true"><span class="octicon octicon-link"></span></a>LIMIT<a class="anchor-link" href="#LIMIT"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore from movies LIMIT 10"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#28</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$1,000 Reward</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$1,000 Reward</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>$1,000 Reward</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>$1,000,000 Duck</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>$1,000,000 Reward, The</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>$10,000 Under a Pillow</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>$100,000</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="OFFSET">
+<a class="anchor" href="#OFFSET" aria-hidden="true"><span class="octicon octicon-link"></span></a>OFFSET<a class="anchor-link" href="#OFFSET"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#lets see next 10 rows</span>
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore from movies LIMIT 10 OFFSET 10"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$100,000 Pyramid, The</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$1000 a Touchdown</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$20,000 Carat, The</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$21 a Day Once a Month</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$2500 Bride, The</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>$30</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>$30,000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>$300 y tickets</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>$40,000</td>
+      <td>9.6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>$5,000 Reward</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ORDER-BY">
+<a class="anchor" href="#ORDER-BY" aria-hidden="true"><span class="octicon octicon-link"></span></a>ORDER BY<a class="anchor-link" href="#ORDER-BY"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in SQL this is done by ORDER BY [column] cmd</span>
+<span class="c1"># we will see first 10 movies in Databse</span>
+
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore, year FROM movies ORDER BY year LIMIT 10"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Roundhay Garden Scene</td>
+      <td>NaN</td>
+      <td>1888</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Traffic Crossing Leeds Bridge</td>
+      <td>NaN</td>
+      <td>1888</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Monkeyshines, No. 2</td>
+      <td>NaN</td>
+      <td>1890</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Monkeyshines, No. 1</td>
+      <td>7.3</td>
+      <td>1890</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Monkeyshines, No. 3</td>
+      <td>NaN</td>
+      <td>1890</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Duncan Smoking</td>
+      <td>3.6</td>
+      <td>1891</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Newark Athlete</td>
+      <td>4.3</td>
+      <td>1891</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Duncan or Devonald with Muslin Cloud</td>
+      <td>3.5</td>
+      <td>1891</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Monkey and Another, Boxing</td>
+      <td>3.2</td>
+      <td>1891</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Duncan and Another, Blacksmith Shop</td>
+      <td>3.5</td>
+      <td>1891</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># lets sort our dataset to descending order</span>
+<span class="c1"># this is done by adding DESC cmd to query after ORDER BY [ex : SELECT &lt;query&gt; FROM &lt;table&gt; ORDER BY &lt;column&gt; DESC</span>
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore, year FROM movies ORDER BY year DESC LIMIT 10"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Harry Potter and the Half-Blood Prince</td>
+      <td>None</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tripoli</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>War of the Red Cliff, The</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rapunzel Unbraided</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Spider-Man 3</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Untitled Star Trek Prequel</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>DragonBall Z</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Harry Potter and the Order of the Phoenix</td>
+      <td>None</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Andrew Henry's Meadow</td>
+      <td>None</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>American Rain</td>
+      <td>None</td>
+      <td>2006</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="DISTINCT">
+<a class="anchor" href="#DISTINCT" aria-hidden="true"><span class="octicon octicon-link"></span></a>DISTINCT<a class="anchor-link" href="#DISTINCT"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT DISTINCT genre FROM movies_genres"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Crime</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Western</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Family</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Animation</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Romance</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Mystery</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Thriller</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Adult</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Music</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Action</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Fantasy</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Sci-Fi</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Horror</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>War</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Musical</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Adventure</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Film-Noir</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are total of 20 different genre in movies. 
+Each movie can compose one or more of each genre.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT DISTINCT first_name, last_name FROM directors;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Todd</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Les</td>
+      <td>12 Poissons</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Lejaren</td>
+      <td>a'Hiller</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nian</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Khairiya</td>
+      <td>A-Mansour</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>86839</th>
+      <td>Yusuf</td>
+      <td>Ünal</td>
+    </tr>
+    <tr>
+      <th>86840</th>
+      <td>Ahmet</td>
+      <td>Ündag</td>
+    </tr>
+    <tr>
+      <th>86841</th>
+      <td>Idil</td>
+      <td>Üner</td>
+    </tr>
+    <tr>
+      <th>86842</th>
+      <td>Yüksel</td>
+      <td>Ünsal</td>
+    </tr>
+    <tr>
+      <th>86843</th>
+      <td>Ahmet</td>
+      <td>Üstel</td>
+    </tr>
+  </tbody>
+</table>
+<p>86844 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="WHERE">
+<a class="anchor" href="#WHERE" aria-hidden="true"><span class="octicon octicon-link"></span></a>WHERE<a class="anchor-link" href="#WHERE"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># lets have a look at data where movie rankscore are greater than 9</span>
+
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore FROM movies WHERE rankscore &gt; 9"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$40,000</td>
+      <td>9.6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>+1 -1</td>
+      <td>9.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12 (2003/II)</td>
+      <td>9.8</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>12 stulyev</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14 Million Dreams</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1064</th>
+      <td>gigr f</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>1065</th>
+      <td>tat critique</td>
+      <td>9.1</td>
+    </tr>
+    <tr>
+      <th>1066</th>
+      <td>tre avec</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>1067</th>
+      <td>lm savasisi</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>1068</th>
+      <td>ltima llamada, La (1996/I)</td>
+      <td>9.5</td>
+    </tr>
+  </tbody>
+</table>
+<p>1069 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># lets limit to top scoring 10 movies</span>
+
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore FROM movies WHERE rankscore &gt; 9 ORDER BY rankscore DESC LIMIT 10"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blow Job</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Duminica la ora 6</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Complex Sessions, The</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Devil's Circus, The</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Duck Soup</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Atunci i-am condamnat pe toti la moarte</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Dosti</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Dawn of the Friend</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Distinto amanecer</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Clearing, The</td>
+      <td>9.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT * FROM movies_genres WHERE genre='comedy';"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>movie_id</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>56420</th>
+      <td>378583</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>56421</th>
+      <td>378594</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>56422</th>
+      <td>378597</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>56423</th>
+      <td>378613</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>56424</th>
+      <td>378614</td>
+      <td>Comedy</td>
+    </tr>
+  </tbody>
+</table>
+<p>56425 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>56k movies in our dataset are comedy genre based.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT * FROM movies_genres WHERE genre != 'Horror';"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>movie_id</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>Crime</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Western</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>388073</th>
+      <td>378612</td>
+      <td>Adventure</td>
+    </tr>
+    <tr>
+      <th>388074</th>
+      <td>378612</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>388075</th>
+      <td>378613</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>388076</th>
+      <td>378613</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>388077</th>
+      <td>378614</td>
+      <td>Comedy</td>
+    </tr>
+  </tbody>
+</table>
+<p>388078 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we should use &lt;column&gt; IS NULL or &lt;column&gt; IS NOT NULL</span>
+<span class="c1"># lets filter movies with zero rankscore</span>
+
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore, year FROM movies WHERE rankscore IS NULL"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#28</td>
+      <td>None</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>None</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$1,000 Reward</td>
+      <td>None</td>
+      <td>1913</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$1,000 Reward</td>
+      <td>None</td>
+      <td>1915</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$1,000 Reward</td>
+      <td>None</td>
+      <td>1923</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>321019</th>
+      <td>"zem blch krlu"</td>
+      <td>None</td>
+      <td>1991</td>
+    </tr>
+    <tr>
+      <th>321020</th>
+      <td>"rgammk"</td>
+      <td>None</td>
+      <td>1995</td>
+    </tr>
+    <tr>
+      <th>321021</th>
+      <td>"zgnm Leyla"</td>
+      <td>None</td>
+      <td>2002</td>
+    </tr>
+    <tr>
+      <th>321022</th>
+      <td>" Istanbul"</td>
+      <td>None</td>
+      <td>1983</td>
+    </tr>
+    <tr>
+      <th>321023</th>
+      <td>"sterreich"</td>
+      <td>None</td>
+      <td>1958</td>
+    </tr>
+  </tbody>
+</table>
+<p>321024 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>in our IMDB dataset, we have 321K movies with no rankscore.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore, year FROM movies WHERE rankscore IS NOT NULL"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$</td>
+      <td>6.4</td>
+      <td>1971</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$1,000,000 Duck</td>
+      <td>5.0</td>
+      <td>1971</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$1000 a Touchdown</td>
+      <td>6.7</td>
+      <td>1939</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$30</td>
+      <td>7.5</td>
+      <td>1999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$40,000</td>
+      <td>9.6</td>
+      <td>1996</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>67240</th>
+      <td>berleben in New York</td>
+      <td>6.9</td>
+      <td>1989</td>
+    </tr>
+    <tr>
+      <th>67241</th>
+      <td>vegtigris</td>
+      <td>8.7</td>
+      <td>2001</td>
+    </tr>
+    <tr>
+      <th>67242</th>
+      <td>Kagiti</td>
+      <td>8.2</td>
+      <td>1981</td>
+    </tr>
+    <tr>
+      <th>67243</th>
+      <td>nc sayfa</td>
+      <td>7.0</td>
+      <td>1999</td>
+    </tr>
+    <tr>
+      <th>67244</th>
+      <td>. 19,99</td>
+      <td>6.3</td>
+      <td>1998</td>
+    </tr>
+  </tbody>
+</table>
+<p>67245 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>we have only 67244 movies with rankscore. Now for our problem statement if rankscore is an important parameter and if we filter all NULL rankscore movies. we get only 67k movies.</p>
+<p>that constitutes only 30% of our original dataset.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Different logical Operators used are :</p>
+<h3 id="AND,-OR,-NOT,-ALL,-ANY,-BETWEEN,-EXISTS,-IN,-LIKE,-SOME">
+<a class="anchor" href="#AND,-OR,-NOT,-ALL,-ANY,-BETWEEN,-EXISTS,-IN,-LIKE,-SOME" aria-hidden="true"><span class="octicon octicon-link"></span></a>AND, OR, NOT, ALL, ANY, BETWEEN, EXISTS, IN, LIKE, SOME<a class="anchor-link" href="#AND,-OR,-NOT,-ALL,-ANY,-BETWEEN,-EXISTS,-IN,-LIKE,-SOME"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, year, rankscore FROM movies WHERE rankscore &gt;9 and year &gt;2000 ORDER BY year;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>American Exile</td>
+      <td>2001</td>
+      <td>9.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Aquarium, L'</td>
+      <td>2001</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Arregui, la noticia del da</td>
+      <td>2001</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Barrio Murders, The</td>
+      <td>2001</td>
+      <td>9.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Berlin Babylon</td>
+      <td>2001</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>Tomorrow's Memoir</td>
+      <td>2004</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>246</th>
+      <td>Trollywood</td>
+      <td>2004</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>Two Days with Juliet</td>
+      <td>2004</td>
+      <td>9.6</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>White Like Me</td>
+      <td>2004</td>
+      <td>9.4</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>Yes and</td>
+      <td>2004</td>
+      <td>9.3</td>
+    </tr>
+  </tbody>
+</table>
+<p>250 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ANY and ALL conditions are mostly used along with SUBQUERIES.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, year, rankscore FROM movies WHERE year BETWEEN 1999 AND 2000;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$30</td>
+      <td>1999</td>
+      <td>7.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$pent</td>
+      <td>2000</td>
+      <td>4.3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>&amp; frres</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>'60s, The</td>
+      <td>1999</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>22614</th>
+      <td>"rgang 1900"</td>
+      <td>1999</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22615</th>
+      <td>"a s'en va et a revient"</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22616</th>
+      <td>"tat d'alerte"</td>
+      <td>1999</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22617</th>
+      <td>"v Hangja, Az"</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22618</th>
+      <td>"... Coitado!"</td>
+      <td>1999</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>22619 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT director_id, genre FROM directors_genres WHERE genre IN('comedy', 'horror');"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>director_id</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>18</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>22</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>23754</th>
+      <td>88790</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>23755</th>
+      <td>88794</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>23756</th>
+      <td>88795</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>23757</th>
+      <td>88796</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>23758</th>
+      <td>88800</td>
+      <td>Comedy</td>
+    </tr>
+  </tbody>
+</table>
+<p>23759 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name,year,rankscore FROM movies WHERE name LIKE 'Tis</span><span class="si">%%</span><span class="s2">';"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tis a Gift to Be Simple</td>
+      <td>1994</td>
+      <td>8.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tis an Ill Wind That Blows No Good</td>
+      <td>1909</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Tis an Till Wind That Blows No Good</td>
+      <td>1912</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Tis kakomoiras</td>
+      <td>1963</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Tis mias drakmis ta giasemia</td>
+      <td>1960</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Tis moiras t' apopaidi</td>
+      <td>1925</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Tis nyhtas ta kamomata</td>
+      <td>1957</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Tis the Season</td>
+      <td>1994</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Tis the Season</td>
+      <td>1998</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Tis tyhis ta grammena</td>
+      <td>1957</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Tis zilias ta kamomata</td>
+      <td>1971</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Tis' the Season to be Jolly</td>
+      <td>1993</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Tisane des sarments, La</td>
+      <td>1980</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Tisc za jednu noc</td>
+      <td>1932</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Tisch No. 6</td>
+      <td>1998</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Tisch, Der</td>
+      <td>1981</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Tisch, Der</td>
+      <td>1998</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Tischlein deck Dich, Esel streck Dich, Knppel ...</td>
+      <td>1938</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Tischlein, deck dich (1956/I)</td>
+      <td>1956</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Tischlein, deck dich (1956/II)</td>
+      <td>1956</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Tiscrocn vcela</td>
+      <td>1983</td>
+      <td>8.5</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Tish</td>
+      <td>1942</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Tish's Spy</td>
+      <td>1915</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Tishe!</td>
+      <td>2002</td>
+      <td>8.7</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Tishina</td>
+      <td>1964</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Tishina</td>
+      <td>1991</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Tishina v Kambodzha</td>
+      <td>1993</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Tishkach Mizeh, Shoom Davar Lo Karah</td>
+      <td>1998</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Tishomingo Blues</td>
+      <td>2005</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Tisina</td>
+      <td>2000</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Tisine</td>
+      <td>1972</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Tisnove volani</td>
+      <td>1985</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Tisoy</td>
+      <td>1977</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Tissage  la main de la toile</td>
+      <td>1929</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Tisserands du pouvoir II: La Rvolte, Les</td>
+      <td>1988</td>
+      <td>4.2</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Tissuespotting</td>
+      <td>1998</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Tistega lepega dne</td>
+      <td>1962</td>
+      <td>7.9</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Tisto: Another Day at the Office</td>
+      <td>2003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Tisto: Live in Concert</td>
+      <td>2003</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Tisucu devetsto devedeset prva</td>
+      <td>1991</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Tisucu godina</td>
+      <td>1992</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Tiswahun</td>
+      <td>1955</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Tisza-szi vzlatok</td>
+      <td>1963</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Tiszavirg</td>
+      <td>1938</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Tiszta Amerika</td>
+      <td>1987</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Tisztelet a kivtelnek</td>
+      <td>1936</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Tisztelet...S</td>
+      <td>2001</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Tisztelt cm</td>
+      <td>1971</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Tisztessg nevben, A</td>
+      <td>1920</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Tiszti kardbojt, A</td>
+      <td>1915</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Tisztttz</td>
+      <td>1918</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT first_name, last_name FROM actors WHERE first_name LIKE 'agn_s';"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Agnès</td>
+      <td>Bouloche</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Agnes</td>
+      <td>Wilke</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Agnes</td>
+      <td>Adams</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Agnes</td>
+      <td>Aker</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Agnès</td>
+      <td>Akopian</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>Ágnes</td>
+      <td>Zakar</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>Agnes</td>
+      <td>Zakreta</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>Ágnes</td>
+      <td>Zsíros</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>Agnes</td>
+      <td>Öberg</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>Agnes</td>
+      <td>Östergren</td>
+    </tr>
+  </tbody>
+</table>
+<p>292 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT first_name, last_name FROM actors WHERE first_name LIKE '</span><span class="si">%%</span><span class="s2">es'"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>James</td>
+      <td>52X</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tørres</td>
+      <td>Aadland</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Charles</td>
+      <td>Aaron</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Reyes</td>
+      <td>Abades</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Jean-Jacques</td>
+      <td>Abadie</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>10295</th>
+      <td>Lourdes</td>
+      <td>Zuriaga</td>
+    </tr>
+    <tr>
+      <th>10296</th>
+      <td>Ines</td>
+      <td>Álvarez</td>
+    </tr>
+    <tr>
+      <th>10297</th>
+      <td>Lourdes</td>
+      <td>Ávalos</td>
+    </tr>
+    <tr>
+      <th>10298</th>
+      <td>Agnes</td>
+      <td>Öberg</td>
+    </tr>
+    <tr>
+      <th>10299</th>
+      <td>Agnes</td>
+      <td>Östergren</td>
+    </tr>
+  </tbody>
+</table>
+<p>10300 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Aggregate-Functions-:">
+<a class="anchor" href="#Aggregate-Functions-:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregate Functions :<a class="anchor-link" href="#Aggregate-Functions-:"> </a>
+</h3>
+<p>COUNT, MIN, MAX, SUM, AVG</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT MIN(year) from movies;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MIN(year)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1888</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT MAX(year) FROM movies;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MAX(year)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2008</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) FROM movies;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>COUNT(*)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>388269</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) FROM movies WHERE year &gt; 2000"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>COUNT(*)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>46006</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="GROUP-BY-with-COUNTS">
+<a class="anchor" href="#GROUP-BY-with-COUNTS" aria-hidden="true"><span class="octicon octicon-link"></span></a>GROUP BY with COUNTS<a class="anchor-link" href="#GROUP-BY-with-COUNTS"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT year, count(year) FROM movies GROUP BY year"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>count(year)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>12056</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2000</td>
+      <td>11643</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1971</td>
+      <td>4072</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1913</td>
+      <td>3690</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1915</td>
+      <td>3722</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>2007</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>1891</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2008</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>1890</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>1888</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>120 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT year, COUNT(year) year_count FROM movies GROUP BY year ORDER BY year_count"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>year_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2008</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1893</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1888</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1890</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1891</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>1999</td>
+      <td>10976</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>2000</td>
+      <td>11643</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>2001</td>
+      <td>11690</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>2003</td>
+      <td>11890</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>2002</td>
+      <td>12056</td>
+    </tr>
+  </tbody>
+</table>
+<p>120 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="HAVING">
+<a class="anchor" href="#HAVING" aria-hidden="true"><span class="octicon octicon-link"></span></a>HAVING<a class="anchor-link" href="#HAVING"> </a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>WHERE is applied on individual rows while HAVING is applied on groups</li>
+<li>
+<p>HAVING is applied after grouping while WHERE is used before grouping.</p>
+<p>Order of execution:</p>
+<ol>
+<li>GROUP BY to create groups</li>
+<li>apply the AGGREGATE FUNCTION</li>
+<li>Apply HAVING condition.</li>
+</ol>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT year, COUNT(year) year_count FROM movies GROUP BY year HAVING year_count&gt;1000;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>year_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2002</td>
+      <td>12056</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2000</td>
+      <td>11643</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1971</td>
+      <td>4072</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1913</td>
+      <td>3690</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1915</td>
+      <td>3722</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>1945</td>
+      <td>1557</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1928</td>
+      <td>2051</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>1936</td>
+      <td>2355</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>1953</td>
+      <td>2549</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>1926</td>
+      <td>2137</td>
+    </tr>
+  </tbody>
+</table>
+<p>97 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="JOIN">
+<a class="anchor" href="#JOIN" aria-hidden="true"><span class="octicon octicon-link"></span></a>JOIN<a class="anchor-link" href="#JOIN"> </a>
+</h3>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s2">"DESCRIBE movies;"</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="s2">"DESCRIBE movies_genres;"</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>name</td>
+      <td>varchar(100)</td>
+      <td>YES</td>
+      <td>MUL</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>year</td>
+      <td>int</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>rankscore</td>
+      <td>float</td>
+      <td>YES</td>
+      <td></td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Null</th>
+      <th>Key</th>
+      <th>Default</th>
+      <th>Extra</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>movie_id</td>
+      <td>int</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>genre</td>
+      <td>varchar(100)</td>
+      <td>NO</td>
+      <td>PRI</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT name, rankscore, genre FROM movies JOIN movies_genres ON movies.id = movies_genres.movie_id "</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>NaN</td>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>NaN</td>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$</td>
+      <td>6.4</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$</td>
+      <td>6.4</td>
+      <td>Crime</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$1,000 Reward</td>
+      <td>NaN</td>
+      <td>Western</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>395114</th>
+      <td>nz de mihlarim</td>
+      <td>NaN</td>
+      <td>Adventure</td>
+    </tr>
+    <tr>
+      <th>395115</th>
+      <td>nz de mihlarim</td>
+      <td>NaN</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>395116</th>
+      <td>egar a gerist</td>
+      <td>NaN</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>395117</th>
+      <td>egar a gerist</td>
+      <td>NaN</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>395118</th>
+      <td>. 19,99</td>
+      <td>6.3</td>
+      <td>Comedy</td>
+    </tr>
+  </tbody>
+</table>
+<p>395119 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above query can also written in a neat readable format like the one below</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT m.name, m.rankscore, g.genre FROM movies m JOIN movies_genres g ON m.id=g.movie_id "</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>rankscore</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>NaN</td>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>#7 Train: An Immigrant Journey, The</td>
+      <td>NaN</td>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$</td>
+      <td>6.4</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>$</td>
+      <td>6.4</td>
+      <td>Crime</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$1,000 Reward</td>
+      <td>NaN</td>
+      <td>Western</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>395114</th>
+      <td>nz de mihlarim</td>
+      <td>NaN</td>
+      <td>Adventure</td>
+    </tr>
+    <tr>
+      <th>395115</th>
+      <td>nz de mihlarim</td>
+      <td>NaN</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>395116</th>
+      <td>egar a gerist</td>
+      <td>NaN</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>395117</th>
+      <td>egar a gerist</td>
+      <td>NaN</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>395118</th>
+      <td>. 19,99</td>
+      <td>6.3</td>
+      <td>Comedy</td>
+    </tr>
+  </tbody>
+</table>
+<p>395119 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>here m and g are table alias for movies and movies_genres table respectively</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Natural-JOIN">
+<a class="anchor" href="#Natural-JOIN" aria-hidden="true"><span class="octicon octicon-link"></span></a>Natural JOIN<a class="anchor-link" href="#Natural-JOIN"> </a>
+</h4>
+<p>JOIN where we have same columns in two tables</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT * FROM directors_genres JOIN movies_directors USING(director_id)"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>director_id</th>
+      <th>genre</th>
+      <th>prob</th>
+      <th>movie_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>Short</td>
+      <td>1.0</td>
+      <td>281325</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>Drama</td>
+      <td>1.0</td>
+      <td>30621</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Drama</td>
+      <td>1.0</td>
+      <td>304743</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>Documentary</td>
+      <td>1.0</td>
+      <td>63525</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>Drama</td>
+      <td>1.0</td>
+      <td>118137</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1732701</th>
+      <td>88797</td>
+      <td>Drama</td>
+      <td>1.0</td>
+      <td>172648</td>
+    </tr>
+    <tr>
+      <th>1732702</th>
+      <td>88798</td>
+      <td>Adventure</td>
+      <td>1.0</td>
+      <td>350996</td>
+    </tr>
+    <tr>
+      <th>1732703</th>
+      <td>88799</td>
+      <td>Short</td>
+      <td>1.0</td>
+      <td>189713</td>
+    </tr>
+    <tr>
+      <th>1732704</th>
+      <td>88800</td>
+      <td>Animation</td>
+      <td>1.0</td>
+      <td>105513</td>
+    </tr>
+    <tr>
+      <th>1732705</th>
+      <td>88800</td>
+      <td>Comedy</td>
+      <td>1.0</td>
+      <td>105513</td>
+    </tr>
+  </tbody>
+</table>
+<p>1732706 rows × 4 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="#-Inner-join-(default)-vs-left-outer-vs-right-outer-vs-full-outer-join.">
+<a class="anchor" href="##-Inner-join-(default)-vs-left-outer-vs-right-outer-vs-full-outer-join." aria-hidden="true"><span class="octicon octicon-link"></span></a># Inner join (default) vs left outer vs right outer vs full-outer join.<a class="anchor-link" href="##-Inner-join-(default)-vs-left-outer-vs-right-outer-vs-full-outer-join."> </a>
+</h4>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT m.name, g.genre from movies m LEFT JOIN movies_genres g ON m.id=g.movie_id LIMIT 20;"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>genre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>173 St.G.B. Blutschande</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>51 StGB</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a Maior</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>apkin gelin</td>
+      <td>Romance</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>arkadas</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>arkadas</td>
+      <td>Romance</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>arkadas</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>arrivata la parigina</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>arrivato il cavaliere!</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>arrivato l'accordatore</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>arrivato mio fratello</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>baba torik</td>
+      <td>Comedy</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>baba torik</td>
+      <td>Fantasy</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>bas l'ternit</td>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>bas les hommes</td>
+      <td>Short</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Beira do Rio</td>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>belles dents</td>
+      <td>Drama</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>bicyclette</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>bientt, j'espre</td>
+      <td>Documentary</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Biribi, disciplinaires franais</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># lets join actors table with their roles and their respective movies.</span>
+<span class="n">query</span><span class="p">(</span><span class="s2">"SELECT a.first_name, a.last_name FROM actors a JOIN roles r ON a.id=r.actor_id"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Michael</td>
+      <td>'babeepower' Viera</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Michael</td>
+      <td>'babeepower' Viera</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Eloy</td>
+      <td>'Chincheta'</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dieguito</td>
+      <td>'El Cigala'</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Antonio</td>
+      <td>'El de Chipiona'</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3431961</th>
+      <td>Herdís</td>
+      <td>Þorvaldsdóttir</td>
+    </tr>
+    <tr>
+      <th>3431962</th>
+      <td>Katla Margrét</td>
+      <td>Þorvaldsdóttir</td>
+    </tr>
+    <tr>
+      <th>3431963</th>
+      <td>Lilja Nótt</td>
+      <td>Þórarinsdóttir</td>
+    </tr>
+    <tr>
+      <th>3431964</th>
+      <td>Hólmfríður</td>
+      <td>Þórhallsdóttir</td>
+    </tr>
+    <tr>
+      <th>3431965</th>
+      <td>Theódóra</td>
+      <td>Þórðardóttir</td>
+    </tr>
+  </tbody>
+</table>
+<p>3431966 rows × 2 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>Note :JOINS are computationally very expensive if number of rows are large.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Sub-Queries-or-Nested-Queries-or-Inner-Queries">
+<a class="anchor" href="#Sub-Queries-or-Nested-Queries-or-Inner-Queries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sub-Queries or Nested Queries or Inner Queries<a class="anchor-link" href="#Sub-Queries-or-Nested-Queries-or-Inner-Queries"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>Task :Lets take a movie and list all actors acted in that.
+For this i need to use 3 tables :</p>
+</blockquote>
+
+<pre><code>* movies = movie name
+* roles = to get actor_id
+* actors = get first_name &amp; last_name
+
+</code></pre>
+<p>lets choose a movie : 'istanbul'</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT first_name, last_name FROM actors WHERE id IN (SELECT actor_id FROM roles WHERE movie_id IN (SELECT id FROM movies WHERE name='istanbul'));"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan</td>
+      <td>Arvan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bobker</td>
+      <td>Ben Ali</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Martin (I)</td>
+      <td>Benson</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>John (I)</td>
+      <td>Bentley</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>François</td>
+      <td>Beukelaers</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>David (I)</td>
+      <td>Bond</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Timothy</td>
+      <td>Bottoms</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>George</td>
+      <td>Calliga</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Albert</td>
+      <td>Carrier</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Amid</td>
+      <td>Chakir</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Nat 'King'</td>
+      <td>Cole</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Edward</td>
+      <td>Colmans</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Franco</td>
+      <td>Corsaro</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Michael (I)</td>
+      <td>Dale</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Eddy</td>
+      <td>De Wilde</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Dominique</td>
+      <td>Deruddere</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Brad</td>
+      <td>Dourif</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Leif</td>
+      <td>Erickson</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Errol (I)</td>
+      <td>Flynn</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>David</td>
+      <td>Gartenkraut</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Fons</td>
+      <td>Goris</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Sami</td>
+      <td>Hazinses</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Ted</td>
+      <td>Hecht</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Engin</td>
+      <td>Inal</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Celal</td>
+      <td>Khosrowshahi</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Werner</td>
+      <td>Klemperer</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Frederic</td>
+      <td>Melchior</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Nico</td>
+      <td>Minardos</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Robert (I)</td>
+      <td>Morley</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Peter (II)</td>
+      <td>Norman</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Sverre Anker</td>
+      <td>Ousdal</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Manuel</td>
+      <td>París</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Jozef</td>
+      <td>Pellens</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Michael</td>
+      <td>Raffetto</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Otto</td>
+      <td>Reichow</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Senne</td>
+      <td>Rouffaer</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Vladimir (I)</td>
+      <td>Sokoloff</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Pierre</td>
+      <td>Stahre</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Merdan</td>
+      <td>Taner</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Torin</td>
+      <td>Thatcher</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Paul</td>
+      <td>Thierry</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Ludo</td>
+      <td>Troch</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Daniel</td>
+      <td>van Avermaet</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Roland</td>
+      <td>Varno</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Alexandre</td>
+      <td>von Sivers</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Nüvit</td>
+      <td>Özdogru</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Arzu</td>
+      <td>Bazman</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Charlotte</td>
+      <td>Berden</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Chris</td>
+      <td>Boni</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Cornell</td>
+      <td>Borchers</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Ingrid</td>
+      <td>De Vos</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Lena</td>
+      <td>Endre</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Peri</td>
+      <td>Hatman</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Emma</td>
+      <td>Kihlberg</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Peggy</td>
+      <td>Knudsen</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Danielle</td>
+      <td>Laurent</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Didi</td>
+      <td>Ramati</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Hillevi</td>
+      <td>Rombin</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Meltem</td>
+      <td>Savci</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Jillian</td>
+      <td>Twigger Moul</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="EXISTS,-ANY,-ALL">
+<a class="anchor" href="#EXISTS,-ANY,-ALL" aria-hidden="true"><span class="octicon octicon-link"></span></a>EXISTS, ANY, ALL<a class="anchor-link" href="#EXISTS,-ANY,-ALL"> </a>
+</h4>
+<ul>
+<li>EXISTS returns true if the subquery returns one or more records or NULL</li>
+<li>ANY operator returns TRUE if any of the subquery values meet the condition.</li>
+<li>ALL operator returns TRUE if all of the subquery values meet the condition.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">query</span><span class="p">(</span><span class="s2">"SELECT * FROM movies WHERE rankscore &gt;= ALL (SELECT MAX(rankscore) FROM movies);"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>year</th>
+      <th>rankscore</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>23608</td>
+      <td>Atunci i-am condamnat pe toti la moarte</td>
+      <td>1971</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>41537</td>
+      <td>Blow Job</td>
+      <td>2002</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>65522</td>
+      <td>Clearing, The</td>
+      <td>2001</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>68770</td>
+      <td>Complex Sessions, The</td>
+      <td>1994</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>79678</td>
+      <td>Dawn of the Friend</td>
+      <td>2004</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>84983</td>
+      <td>Devil's Circus, The</td>
+      <td>1926</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>87894</td>
+      <td>Distinto amanecer</td>
+      <td>1943</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>91477</td>
+      <td>Dosti</td>
+      <td>1964</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>94558</td>
+      <td>Duck Soup</td>
+      <td>1942</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>95123</td>
+      <td>Duminica la ora 6</td>
+      <td>1965</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>125616</td>
+      <td>Genet parle d'Angela Davis</td>
+      <td>1970</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>131247</td>
+      <td>Gong fu qi jie</td>
+      <td>1979</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>145429</td>
+      <td>Himala</td>
+      <td>1982</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>153301</td>
+      <td>Huttyn</td>
+      <td>1996</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>163898</td>
+      <td>Ivan Groznyj III</td>
+      <td>1988</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>171541</td>
+      <td>Jnos vitz</td>
+      <td>1973</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>205227</td>
+      <td>Marche des femmes  Hendaye, La</td>
+      <td>1975</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>227596</td>
+      <td>Napolon Bonaparte</td>
+      <td>1934</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>230568</td>
+      <td>New Clear Farm</td>
+      <td>1998</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>230864</td>
+      <td>New World, The</td>
+      <td>1982</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>246768</td>
+      <td>Pair of Boots, A</td>
+      <td>1962</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>264084</td>
+      <td>Prince Solitaire</td>
+      <td>2003</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>266013</td>
+      <td>Prostitues de Lyon parlent, Les</td>
+      <td>1975</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>288249</td>
+      <td>Sargam</td>
+      <td>1995</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>289646</td>
+      <td>Scarmour</td>
+      <td>1997</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>289842</td>
+      <td>Schalkse ruiters</td>
+      <td>1997</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>305294</td>
+      <td>Slyozy kapali</td>
+      <td>1982</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>313896</td>
+      <td>Star povesti cesk</td>
+      <td>1953</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>320483</td>
+      <td>Svadba</td>
+      <td>1944</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>320710</td>
+      <td>Svoga tela gospodar</td>
+      <td>1957</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>334747</td>
+      <td>Together &amp; Alone</td>
+      <td>1998</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>343965</td>
+      <td>Ubijtsi vykhodyat na dorogu</td>
+      <td>1942</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>347078</td>
+      <td>Unicorn in the Garden, A</td>
+      <td>1953</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>351405</td>
+      <td>Velnio nuotaka</td>
+      <td>1973</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>357173</td>
+      <td>Voynata na taralezhite</td>
+      <td>1979</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>363633</td>
+      <td>Whirlpool, The</td>
+      <td>2003</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>368865</td>
+      <td>Wrestling with Shadows</td>
+      <td>2000</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>372074</td>
+      <td>You Are Not I</td>
+      <td>1981</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>372443</td>
+      <td>Young and Restless 2</td>
+      <td>1985</td>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>374517</td>
+      <td>Zenith</td>
+      <td>2001</td>
+      <td>9.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">"SHOW WARNINGS;"</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/blog/2022/10/11/SQL-Data-Manipulation.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
